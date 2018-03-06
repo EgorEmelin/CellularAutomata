@@ -263,9 +263,17 @@ if ((j >= 30) &&(j<=36) && (i >=100)&&(i<=130) )
         x = 0;
         y = 0;
     }
-
+    double time = 0;
     private void mobile_moving (int a, int b)
     {
+        double speed = 10;
+
+        double xOne, xZero = 30;
+        int xCeil;
+
+        time = time + time * a;
+        xOne = xZero + speed * time;
+        xCeil = (int) Math.ceil(xOne);
         byte [][] obj1,obj2,obj3,obj4;
         obj1 = new byte[N][N]; obj2 = new byte[N][N]; obj3 = new byte[N][N]; obj4 = new byte[N][N];
         if (a<b){
@@ -307,15 +315,19 @@ if ((j >= 30) &&(j<=36) && (i >=100)&&(i<=130) )
                         }
                     }
             }*/
-            if (36 +2* a<=N-1) {
+
+
+
+
+
+
+            if (xCeil<=N-1) {
                 for (int i = 100; i <= 130; i++) // Задание начального состояния сетки (t = 0)
-                    for (int j = 30 + 2*a; j <= 36 + 2*a; j++) {
+                    for (int j = xCeil; j <= xCeil +6; j++) {
                         //a_t[i][j] = 0;
                         img[i][j] = -20;
-                        if ( j == 30+2*a )
-                            img[i][j-3] = 0;
-                        img[i][j-4] = 0;
-
+                        if ( j == xCeil )
+                            img[i][j-1] = 0;
                     }
             }
             clearence();
